@@ -1,0 +1,201 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.15.5
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Czas generowania: 18 Maj 2017, 10:02
+-- Wersja serwera: 10.1.14-MariaDB
+-- Wersja PHP: 5.6.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Baza danych: `umowy_pieczecie`
+--
+CREATE DATABASE IF NOT EXISTS `umowy_pieczecie` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `umowy_pieczecie`;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `adnotacje`
+--
+
+DROP TABLE IF EXISTS `adnotacje`;
+CREATE TABLE IF NOT EXISTS `adnotacje` (
+  `id` int(11) unsigned NOT NULL,
+  `id_umowy` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
+  `adnotacje` text COLLATE utf8_polish_ci,
+  `uzytkownik_id` int(11) DEFAULT NULL,
+  `data` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `rejestr_umow`
+--
+
+DROP TABLE IF EXISTS `rejestr_umow`;
+CREATE TABLE IF NOT EXISTS `rejestr_umow` (
+  `id` int(11) unsigned NOT NULL,
+  `numer_kolejny_zapisu` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
+  `data_rejestracji_zapisu` date DEFAULT NULL,
+  `nazwa_nadawcy_adresata` text COLLATE utf8_polish_ci,
+  `numer_dokumentu_otrzymania` text COLLATE utf8_polish_ci,
+  `nazwa_dokumentu_lub_czego_dotyczy` text COLLATE utf8_polish_ci,
+  `uzytkownik_id` int(11) DEFAULT NULL,
+  `data` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `kategoria` tinytext COLLATE utf8_polish_ci,
+  `skan` varchar(100) COLLATE utf8_polish_ci DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `rejestr_wydanych`
+--
+
+DROP TABLE IF EXISTS `rejestr_wydanych`;
+CREATE TABLE IF NOT EXISTS `rejestr_wydanych` (
+  `id` int(11) unsigned NOT NULL,
+  `id_umowy` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
+  `komu_wydany_stanowisko` varchar(200) COLLATE utf8_polish_ci DEFAULT NULL,
+  `komu_wydany_data` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `komu_wydany_imie_i_nazwisko` varchar(200) COLLATE utf8_polish_ci DEFAULT NULL,
+  `zwrocony` varchar(3) COLLATE utf8_polish_ci DEFAULT NULL,
+  `uzytkownik_id` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `rejestr_zwrotow`
+--
+
+DROP TABLE IF EXISTS `rejestr_zwrotow`;
+CREATE TABLE IF NOT EXISTS `rejestr_zwrotow` (
+  `id` int(11) unsigned NOT NULL,
+  `id_wydania` int(11) DEFAULT NULL,
+  `zwrot_data` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `uzytkownik_id` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `uwagi`
+--
+
+DROP TABLE IF EXISTS `uwagi`;
+CREATE TABLE IF NOT EXISTS `uwagi` (
+  `id` int(11) unsigned NOT NULL,
+  `id_umowy` varchar(50) COLLATE utf8_polish_ci DEFAULT NULL,
+  `uwagi` text COLLATE utf8_polish_ci,
+  `uzytkownik_id` int(11) DEFAULT NULL,
+  `data` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `uzytkownicy`
+--
+
+DROP TABLE IF EXISTS `uzytkownicy`;
+CREATE TABLE IF NOT EXISTS `uzytkownicy` (
+  `id` int(11) unsigned NOT NULL,
+  `nazwa` varchar(40) COLLATE utf8_polish_ci DEFAULT NULL,
+  `uzytkownik` varchar(20) COLLATE utf8_polish_ci DEFAULT NULL,
+  `haslo` varchar(20) COLLATE utf8_polish_ci DEFAULT NULL,
+  `zapis` int(11) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Indeksy dla zrzutów tabel
+--
+
+--
+-- Indexes for table `adnotacje`
+--
+ALTER TABLE `adnotacje`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_uwagi` (`id_umowy`),
+  ADD KEY `id_umowy` (`id_umowy`);
+
+--
+-- Indexes for table `rejestr_umow`
+--
+ALTER TABLE `rejestr_umow`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `numer_kolejny_zapisu` (`numer_kolejny_zapisu`);
+
+--
+-- Indexes for table `rejestr_wydanych`
+--
+ALTER TABLE `rejestr_wydanych`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rejestr_zwrotow`
+--
+ALTER TABLE `rejestr_zwrotow`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uwagi`
+--
+ALTER TABLE `uwagi`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_umowy` (`id_umowy`);
+
+--
+-- Indexes for table `uzytkownicy`
+--
+ALTER TABLE `uzytkownicy`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT dla tabeli `adnotacje`
+--
+ALTER TABLE `adnotacje`
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT dla tabeli `rejestr_umow`
+--
+ALTER TABLE `rejestr_umow`
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT dla tabeli `rejestr_wydanych`
+--
+ALTER TABLE `rejestr_wydanych`
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT dla tabeli `rejestr_zwrotow`
+--
+ALTER TABLE `rejestr_zwrotow`
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT dla tabeli `uwagi`
+--
+ALTER TABLE `uwagi`
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT dla tabeli `uzytkownicy`
+--
+ALTER TABLE `uzytkownicy`
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

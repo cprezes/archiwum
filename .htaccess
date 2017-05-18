@@ -1,0 +1,6 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule ^archiwum/([0-9]+)/?$ /archiwum/archiwum.php?kat=$1[L]
+    RewriteRule ^archiwum/dokument/(.*)$ /archiwum/dokument.php?id=$1 [L]
+    RewriteRule ^archiwum/plik/(.*)$ /archiwum/dokument.php?plik=$1 [L]
+</IfModule>

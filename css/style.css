@@ -1,0 +1,193 @@
+boddy {
+	margin: 1px 1px 1px 1px;
+	background-color : #FFFFFF ;
+	color : #465675;
+	scrollbar-3dlight-color: #FFFFFF;
+	scrollbar-base-color: #CCE1E3;
+	scrollbar-darkshadow-color: #356C82;
+	scrollbar-face-color: #CCE1E3;
+	scrollbar-highlight-color: #CCE1E3;
+	scrollbar-shadow-color: #CCE1E3;
+	scrollbar-track-color: #CACEDB;
+	scrollbar-arrow-color: #CCE1E3;
+	}
+
+td,div {
+	font-family: Tahoma, Arial, Verdana, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	}
+
+textarea {
+	font-family: Tahoma, Verdana, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #888;
+	background: #FFFFFF;
+	border: 1px solid;
+	overflow: auto;
+	resize: none;
+	}
+
+h4 {
+	color: #356C82; font-family: Tahoma, Arial, Verdana, Helvetica, sans-serif;
+	font-size: 14px; font-weight: bold;
+	}
+
+h5 {
+	color: #356C82; font-family: Tahoma, Arial, Verdana, Helvetica, sans-serif;
+	font-size: 13px; font-weight: bold;
+	}
+
+h6 {
+	color: #356C82; font-family: Tahoma, Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px; font-weight: bold;
+	}
+
+a:link, a:visited {
+	font-size: 11px; 
+	color: #000000; 
+	text-decoration: none;
+	font-family:  Tahoma, Arial, Verdana, Helvetica, sans-serif;
+	}
+
+a:hover {
+	color: #888;	text-decoration: none;
+         background-color: whitesmoke;
+	}
+hr {
+	background: #454E85; height:2px; border: 1px solid;
+	}
+
+.button {
+	color: #888; font-family: Tahoma, Verdana, Helvetica, sans-serif;
+	margin-top: 4px;
+	font-weight: bold;
+	text-align: center;
+	font-size: 12px;
+	font: bold;
+	background: White;
+	border: 1px solid #888;
+	height: 30px;
+	}
+
+.inputbox {
+	font-family: Tahoma, Verdana, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #888;
+	background: #FFFFFF;
+	border: 1px solid;
+
+	width:330px;
+	}
+.inputbox_b {
+	font-family: Tahoma, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #888;
+	background: #FFFFFF;
+	border: 1px solid;
+	height: 25px;
+	width:160px;
+	}
+
+
+ul {
+	margin: 0px 0px 0px 0px;
+	}
+
+li {
+	list-style: inside 3px;
+	}
+	
+	
+body,p {
+	background: #DDDDDD;
+	margin: 0;
+	padding: 20px;
+	line-height: 1.4em;
+	font-family: tahoma, arial, sans-serif;
+}
+
+table {
+	margin: 0;
+	background: #FFFFFF;
+	border: 0px solid #333333;
+	border-collapse: collapse;
+}
+
+.table_main {
+	width: 1200px;
+	margin: 0;
+	background: #FFFFFF;
+	border: 1px solid #333333;
+	border-collapse: collapse;
+	text-align: center;
+	margin-left:auto; 
+	margin-right:auto;
+}
+
+td, th {
+	border-bottom: 0px solid #333333;
+	padding: 6px 10px;
+
+}
+
+.center {
+	text-align: center;
+}
+
+
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
+}
+
+
+th {
+	background: #EEEEEE;
+}
+
+caption {
+	background: #E0E0E0;
+	margin: 0;
+	border: 1px solid #333333;
+	border-bottom: none;
+	padding: 6px 16px;
+	font-weight: bold;
+}
+
+div.logo {
+    position:initial;
+    width:0px;
+    height:0px;
+    left:10px;
+    top:0px;
+}
+  table.center {
+    margin-left:auto; 
+    margin-right:auto;
+  }
+  
+div.zalogowany  {
+  color: rgba(255,255,255,1);
+  text-align: right;
+}
+div.login{   
+    border: 1px dotted black;
+    padding: 20px;
+    background-clip: content-box;
+
+}
+
+
+form
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+   
+}
+
