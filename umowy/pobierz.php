@@ -11,7 +11,7 @@ if (isset($_SESSION['uzytkownik']) > 0) {
      if (!($nazwaPliku==$_GET['nazwa'])) die();
     $path = KATALOG_UMOWY;
     $fullPath = $path.$_GET['plik'];
-    
+    log_add("Download ".$nazwaPliku." path : ".$fullPath);
 
 
   if (file_exists($fullPath)) {

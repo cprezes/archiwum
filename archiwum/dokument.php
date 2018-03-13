@@ -204,7 +204,9 @@ if (!empty(Session::get("uzytkownik")) AND Session::get("uzytkownik") > 0 and Se
                                                         </html>
         <?php
     }
-}
+
+    log_add("DOC " .$query. " ". json_encode( $rowForLog)  ); 
+    }
 else {
     echo ( constant('Bug'));
 }

@@ -9,8 +9,9 @@ include_once ("../include/data.php");
     $dbpassword = constant('dbpassword');
     $dbarch     = constant('dbpieczecie') ;
     $adres_tmp = basename($_SERVER['PHP_SELF']). "?kat=";
-   if ((isset($_GET["strona"]) and (!(empty($_GET["strona"]))))) {$strona = $_GET["strona"] ;} else { $strona=1;} 
-     
+  
+    
+   if ((isset($_GET["strona"]) and (!(empty($_GET["strona"]))))) {$strona = $_GET["strona"] ;} else { $strona=1;}
    If ((isset($_POST["numer_kolejny_zapisu"])) and (!(empty($_POST["numer_kolejny_zapisu"])))) $numer_kolejny_zapisu=$_POST["numer_kolejny_zapisu"]; else  $numer_kolejny_zapisu="";
    If ((isset($_POST["data_rejestracji_zapisu"])) and (!(empty($_POST["data_rejestracji_zapisu"])))) $data_rejestracji_zapisu=$_POST["data_rejestracji_zapisu"]; else $data_rejestracji_zapisu=""; 
    If ((isset($_POST["data_rejestracji_dokumentu"])) and (!(empty($_POST["data_rejestracji_dokumentu"])))) $data_rejestracji_dokumentu=$_POST["data_rejestracji_dokumentu"]; else $data_rejestracji_dokumentu=date("Y-m-d");
@@ -30,7 +31,12 @@ include_once ("../include/data.php");
    If ((isset($_POST["uwagi"])) and (!(empty($_POST["uwagi"])))) $uwagi=$_POST["uwagi"]; else $uwagi="";
    If ((isset($_POST["usun"])) and (!(empty($_POST["usun"])))) $usun=$_POST["usun"]; else $wgrany_plik= $pdf1;
    
+$queryResult="";
 
+
+foreach($_REQUEST as $key => $value){
+ $queryResult= $queryResult. " " . $key . " : " . $value ;
+}
 
 
 if (!empty(Session::get("uzytkownik")) AND Session::get("uzytkownik") > 0 and Session::get("Nazwa_bazy") == "Pieczecie") {
@@ -981,7 +987,14 @@ print "</table>";
 	</tr>
 </table>
 <?php
-     }
+     
+
+if  (isset( $query)) $queryResult=$queryResult." ".$query; 
+if  (isset( $query1)) $queryResult=$queryResult." ".$query1; 
+if  (isset( $query2)) $queryResult=$queryResult." ".$query2; 
+log_add($queryResult);
+
+}
   else
      {
          echo ( constant('Bug'));

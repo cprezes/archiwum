@@ -87,7 +87,7 @@ header("Content-type: text/html; charset=utf-8");
 
                                                                 <font color="#0E2873" size="2" face="Arial">
                                                                 <span style="text-decoration: none"><b>Umowy</b></span></font></A><BR><IMG height=10 src="
-                                       <?php echo URL; ?>images/space.gif" width=10></DIV></TD>
+                                                                                                                                       <?php echo URL; ?>images/space.gif" width=10></DIV></TD>
                                                     <TD vAlign=bottom width=82 background="<?php echo URL; ?>images/bg1.gif"><DIV align=left>
                                                             <A class=l1 href="<?php
                                                             if ((!empty(Session::get("Nazwa_bazy"))) And ( Session::get("Nazwa_bazy") == "Archiwum")) {
@@ -98,10 +98,10 @@ header("Content-type: text/html; charset=utf-8");
                                                             ?>">
                                                                 <font color="#0E2873" size="2" face="Arial">
                                                                 <span style="text-decoration: none"><b>Archiwum</b><br></span></font></A>
-                                                                <IMG src="<?php echo URL; ?>images/space.gif" width=10><BR></DIV></TD>
-                                                                
-                                                                
-                                                                <TD vAlign=bottom width=82 background="<?php echo URL; ?>images/bg1.gif"><DIV align=left>
+                                                            <IMG src="<?php echo URL; ?>images/space.gif" width=10><BR></DIV></TD>
+
+
+                                                    <TD vAlign=bottom width=82 background="<?php echo URL; ?>images/bg1.gif"><DIV align=left>
                                                             <A class=l1 href="<?php
                                                             if ((!empty(Session::get("Nazwa_bazy"))) And ( Session::get("Nazwa_bazy") == "Pieczecie")) {
                                                                 echo constant("URL") . Session::get("Gdzie_jestem");
@@ -111,7 +111,7 @@ header("Content-type: text/html; charset=utf-8");
                                                             ?>">
                                                                 <font color="#0E2873" size="2" face="Arial">
                                                                 <span style="text-decoration: none"><b>Pieczęcie</b><br></span></font></A>
-                                                                <IMG src="<?php echo URL; ?>images/space.gif" width=10><BR></DIV></TD>
+                                                            <IMG src="<?php echo URL; ?>images/space.gif" width=10><BR></DIV></TD>
 
                                                 </TR></TBODY></TABLE></TD></TR>
                                 <TR>
@@ -123,27 +123,29 @@ header("Content-type: text/html; charset=utf-8");
                                             <TBODY><center>
 
 
-                                            <img border="0" src="<?php echo URL; ?>images/loop.gif" width="960" height="140" style="box-shadow: 0px 0px 15px #888888;">
-                                           </center> </TBODY></TABLE></TD></TR>
+                                                <img border="0" src="<?php echo URL; ?>images/loop.gif" width="960" height="140" style="box-shadow: 0px 0px 15px #888888;">
+                                            </center> </TBODY></TABLE></TD></TR>
+                <TR>
+                    <TD bgColor=#959595><?php
+                        if (!empty(Session::get("zalogowano"))) {
+                            echo '<div class="zalogowany">' . Session::get("zalogowano") . '<a href= ' . constant("URL") . 'wyloguj.php> Wyloguj się.</a> </div>';
+                        
+                            
+                        }
+                        ?>
+                        <IMG height=10
+                             src="<?php echo URL; ?>images/space.gif"
+                             width=10></TD></TR>
+                <TR>
+                    <TD bgColor=#0E2873 height="10"><IMG height=3
+                                                         src="<?php echo URL; ?>images/space.gif"
+                                                         width=10></TD></TR>
+                <TR>
+                    <TD>
+                        <TABLE cellSpacing=0 cellPadding=8 width="100%" border=0>
+                            <TBODY>
                                 <TR>
-                                    <TD bgColor=#959595><?php
-                                        if (!empty(Session::get("zalogowano"))) {
-                                            echo '<div class="zalogowany">' . Session::get("zalogowano") . '<a href= ' . constant("URL") . 'wyloguj.php> Wyloguj się.</a> </div>';
-                                        }
-                                                            ?>
-                                        <IMG height=10
-                                             src="<?php echo URL; ?>images/space.gif"
-                                             width=10></TD></TR>
-                                <TR>
-                                    <TD bgColor=#0E2873 height="10"><IMG height=3
-                                                                         src="<?php echo URL; ?>images/space.gif"
-                                                                         width=10></TD></TR>
-                                <TR>
-                                    <TD>
-                                        <TABLE cellSpacing=0 cellPadding=8 width="100%" border=0>
-                                            <TBODY>
-                                                <TR>
-                                                    <TD vAlign=top width="23%" bgColor=#f4f4f4 style="box-shadow: 0px 0px 15px #888888;">
-                                                    </TD></TR></TBODY></TABLE></TD></TR>
-                                <tr valign="top">
-                                    <td>
+                                    <TD vAlign=top width="23%" bgColor=#f4f4f4 style="box-shadow: 0px 0px 15px #888888;">
+                                    </TD></TR></TBODY></TABLE></TD></TR>
+                <tr valign="top">
+                    <td>

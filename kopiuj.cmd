@@ -1,8 +1,8 @@
-subst z: /D
-subst z: \\VBOXSVR\Udostepniony
-RD /S /Q "z:\PHP\archiwum\"
-xcopy "C:\xampp\htdocs\archiwum" "z:\PHP\archiwum\"  /y /s
-del "z:\PHP\archiwum\kopiuj.cmd"
-del "z:\PHP\archiwum\README.md"
-del "z:\PHP\archiwum\.gitignore"
-RD /S /Q "z:\PHP\archiwum\nbproject\"
+subst x: /D
+subst x: "\\vmware-host\Shared Folders\Udostepniony"
+RD /S /Q "X:\PHP\archiwum\"
+xcopy "C:\xampp\htdocs\archiwum" "X:\PHP\archiwum\"  /y /s
+del "X:\PHP\archiwum\kopiuj.cmd"
+del "X:\PHP\archiwum\README.md"
+del "X:\PHP\archiwum\.gitignore"
+RD /S /Q "X:\PHP\archiwum\nbproject\"

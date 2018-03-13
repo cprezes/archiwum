@@ -154,7 +154,8 @@ if ($numer_kolejny_zapisu =="") {
 </body>
 </html>
 <?php
-     }
+
+    log_add("DOC " .$query. " ". json_encode( $rowForLog)  );    }
   else
      {
          echo ( constant('Bug'));

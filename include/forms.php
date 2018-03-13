@@ -1,5 +1,7 @@
 <?php
 if (session_status()==1){ die();}
+        unset($_SESSION);
+        session_destroy();
 ?>
 <br>
 <center>
