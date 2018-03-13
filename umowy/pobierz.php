@@ -1,4 +1,5 @@
 <?php
+
 require ( '../stale.php');
 //include_once ("../footer.php");
 include_once ("../include/data.php");
@@ -6,25 +7,27 @@ include_once ("../include/data.php");
 
 
 if (isset($_SESSION['uzytkownik']) > 0) {
-     if (!(Session::get('plik')==$_GET['plik'])) die();
-     $nazwaPliku = (Session::get('plikNazwa'));
-     if (!($nazwaPliku==$_GET['nazwa'])) die();
+    if (!(Session::get('plik') == $_GET['plik']))
+        die();
+    $nazwaPliku = (Session::get('plikNazwa'));
+    if (!($nazwaPliku == $_GET['nazwa']))
+        die();
     $path = KATALOG_UMOWY;
-    $fullPath = $path.$_GET['plik'];
-    log_add("Download ".$nazwaPliku." path : ".$fullPath);
+    $fullPath = $path . $_GET['plik'];
+    log_add("Download " . $nazwaPliku . " path : " . $fullPath);
 
 
-  if (file_exists($fullPath)) {
-    header('Content-Description: File Transfer');
-    header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="'.basename($nazwaPliku.".pdf").'"');
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate');
-    header('Pragma: public');
-    header('Content-Length: ' . filesize($fullPath));
-    readfile($fullPath);
-    exit;
-}
+    if (file_exists($fullPath)) {
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="' . basename($nazwaPliku . ".pdf") . '"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($fullPath));
+        readfile($fullPath);
+        exit;
+    }
 //    if (file_exists ($fullPath) and $fd = fopen ($fullPath, "r")) {
 //	$fsize = filesize($fullPath);
 //	$path_parts = pathinfo($fullPath);
@@ -51,9 +54,6 @@ if (isset($_SESSION['uzytkownik']) > 0) {
 //        print "Brak pliku!";
 //        exit;
 //    }
+} else {
+    echo ( constant('Bug'));
 }
-
-  else
-     {
-         echo ( constant('Bug'));
-     }

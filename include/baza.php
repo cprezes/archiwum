@@ -17,7 +17,7 @@
  * * read at:
  * *
  * * http://www.opensource.org/licenses/gpl-license.php
-*/
+ */
 
 class DB {
 
@@ -162,9 +162,11 @@ class DB {
      * @return mixed $data
      */
     public function getSingleDataFormfistRow($data, $column) {
-        if (empty($data)){            return false;}
-        
-       return (@is_array($data[0]) ?           array_shift(array_values($data))[$column]:$data[$column]);
+        if (empty($data)) {
+            return false;
+        }
+
+        return (@is_array($data[0]) ? array_shift(array_values($data))[$column] : $data[$column]);
     }
 
     /**
@@ -837,18 +839,19 @@ class DB {
 
         return True;
     }
-    public function generateExcel($res,$filename="default") {
+
+    public function generateExcel($res, $filename = "default") {
         if (count($res) < 1) {
             return FALSE;
         }
-        
-        $res= self::clean($res);
+
+        $res = self::clean($res);
         require 'ExportData.php';
-        if ( $filename=="default"){
-        $now = gmdate("D, d M Y H:i:s");
-        $filename = "export_" . date("Y-m-d");
+        if ($filename == "default") {
+            $now = gmdate("D, d M Y H:i:s");
+            $filename = "export_" . date("Y-m-d");
         }
-        $oExport = new ExportDataExcel('browser', $filename. ".xls");
+        $oExport = new ExportDataExcel('browser', $filename . ".xls");
 
         $fields = array_keys($res[0]);
         foreach ($fields as $fileld) {
@@ -872,6 +875,7 @@ class DB {
 
         return true;
     }
+
     public function generateList($res) {
         if (empty($res)) {
             return FALSE;
@@ -879,22 +883,22 @@ class DB {
 
         $fields = array_keys(array_shift(array_values($res)));
         echo '<div>';
-        
+
         foreach ($res as $key1d => $values1d) {
             echo '<table style= "  font-family: Trebuchet MS, Arial, Helvetica, sans-serif;    border-collapse: collapse;    width: 100%;"><dl class="dl-horizontal">';
             foreach ($values1d as $key2d => $values2d) {
 
-                echo '<tr><td style="text-align: left; float: right;"><b> '.ucfirst(strtolower($key2d)). " </b></td><td style= 'padding-left : 12px;'> $values2d</td></tr>";
+                echo '<tr><td style="text-align: left; float: right;"><b> ' . ucfirst(strtolower($key2d)) . " </b></td><td style= 'padding-left : 12px;'> $values2d</td></tr>";
             }
             echo "</dl><table><br/>";
         }
 
 
-          echo "</div>";
+        echo "</div>";
 
         return True;
     }
-}
 
+}
 
 //end class DB

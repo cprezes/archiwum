@@ -28,7 +28,7 @@ class tabGen {
         echo "<thead style=\"  white-space: nowrap; \">";
         $header = array();
         for ($i = 0; $i < $field_count; $i++) {
-            echo "<th><center>" . $this->fields[$i] ." ";
+            echo "<th><center>" . $this->fields[$i] . " ";
 
 
 

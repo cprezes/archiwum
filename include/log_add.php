@@ -14,7 +14,7 @@ function log_add($parametry = "") {
     if (Session::get("uzytkownik"))
         $user = Session::get("user");
     include_once __DIR__ . '/baza.php';
-    include_once __DIR__ .'/../stale.php';
+    include_once __DIR__ . '/../stale.php';
     $logDB = new DB(LOG_DB_HOST, LOG_DB_USER, LOG_DB_PASSWD, LOG_DB_NAME);
     $data = array(
         'user_name' => $user,
@@ -22,11 +22,8 @@ function log_add($parametry = "") {
         'adress' => $link,
         'parmas' => $parametry
     );
-    
-    $data= $logDB->filter($data);
+
+    $data = $logDB->filter($data);
 
     $logDB->insert(Session::get("db_name"), $data);
 }
-
-
-
